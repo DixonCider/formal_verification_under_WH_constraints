@@ -1,5 +1,5 @@
-from probe_verifier import ProbeVerifier
-from containers import Pair
+from .probe_verifier import ProbeVerifier
+from .containers import Pair
 import pickle, random
 from copy import deepcopy
 
@@ -108,7 +108,7 @@ class BoundaryGenerator(object):
           record.append( new_m )
 
       if len(record) == self.k_bar + 1:
-        print (rand_proportion)
+        # print (rand_proportion)
         return record     
 
 
@@ -136,7 +136,7 @@ class BoundaryGenerator(object):
     if p_mk.k == self.k_bar:
       self.bounds.append( deepcopy(record) )
       # print (len(self.bounds))
-      print (record)
+      # print (record)
       return
 
     self._bound_recursion_helper(Pair(p_mk.m, p_mk.k+1), record)

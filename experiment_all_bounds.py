@@ -2,9 +2,9 @@ import random, pickle
 import numpy as np
 from time import time
 
-from mock_single_verifier import MockSingleVerifier, BoundSingleVerifier
-from monotonic_verifier import MonotonicVerifier
-from probe_verifier import ProbeVerifier
+from .mock_single_verifier import MockSingleVerifier, BoundSingleVerifier
+from .monotonic_verifier import MonotonicVerifier
+from .probe_verifier import ProbeVerifier
 
 if __name__ == '__main__':
   # to store the results (estimated total cost) & additional overhead

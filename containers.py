@@ -50,7 +50,7 @@ class BaseGridVerifier(object):
       for m in range(1, k):
         cost_matrix[m][k] = cost_matrix[m-1][k] + factorials[k-1] / (factorials[m] * factorials[k-1-m])
 
-    self.cost_matrix = np.array(cost_matrix)
+    return np.array(cost_matrix)
 
 if __name__ == '__main__':
   bv = BaseGridVerifier(10)

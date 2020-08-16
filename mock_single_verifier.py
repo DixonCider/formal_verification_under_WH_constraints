@@ -1,4 +1,4 @@
-from containers import Pair
+from .containers import Pair
 
 class MockSingleVerifier(object):
   '''

@@ -1,15 +1,18 @@
 import random
 
-from containers import Pair, BaseGridVerifier
-from mock_single_verifier import MockSingleVerifier
+from .containers import Pair, BaseGridVerifier
+from .mock_single_verifier import MockSingleVerifier
 
 class MonotonicVerifier(BaseGridVerifier):
   '''
   Kai-Chieh's monotonic approach.
   '''
-  def __init__(self, k_bar, single_verifier=None):
+  def __init__(self, k_bar, single_verifier=None, cost_matrix=None):
     super().__init__(k_bar)
-    self.compute_cost_matrix()
+    if cost_matrix is None:
+        self.cost_matrix = self.compute_cost_matrix()
+    else:
+        self.cost_matrix = cost_matrix
     self.m_upper_k = [k for k in range(self.k_bar + 1)]
     self.m_lower_k = [0 for k in range(self.k_bar + 1)]
   

@@ -1,16 +1,17 @@
 import os
 import numpy as np
 from math import ceil
-from containers import Pair, BaseGridVerifier
-from mock_single_verifier import MockSingleVerifier
+from .containers import Pair, BaseGridVerifier
+from .mock_single_verifier import MockSingleVerifier
 import random
 
 class ProbeVerifier(BaseGridVerifier):
   '''
   The proposed appraoch.
   '''
-  def __init__(self, k_bar, single_verifier=None):
+  def __init__(self, k_bar, single_verifier=None, cost_matrix=None):
     super().__init__(k_bar)
+
     self.V = self.get_all_mks_to_check()
 
     self.S = dict()
@@ -18,7 +19,11 @@ class ProbeVerifier(BaseGridVerifier):
     self.U = dict()
     self.get_all_unsafe_implications()
 
-    self.compute_cost_matrix()
+    if cost_matrix is None:
+        self.cost_matrix = self.compute_cost_matrix()
+    else:
+        self.cost_matrix = cost_matrix
+
     self.m_upper_k = [k for k in range(self.k_bar + 1)]
     self.m_lower_k = [0 for k in range(self.k_bar + 1)]
 
